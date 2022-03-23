@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<!-- doctype establised -->
+
+    <head>
+    
+<!-- creating information as to not spoil the audio, but provide context -->
+
+        <title> Cat Burp </title>
+        <meta name="description" content="This is a page dedicated to the a cat meme.
+        Click the cat for a surprise!">
+    
+    
+<!-- adding design to the elements -->
+
+         <style>
+    
+            
+             body {
+                background-color: #000000;
+                color: #ffffff;
+            }
+
+            #text {font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;}
+
+            .container {position: relative;}
+
+/* positioning the cat gif to overlap with initial cat image */
+
+            #image {position: absolute;}
+
+
+            button {
+               background-color: transparent;
+               border: none;
+            }
+
+            #cat1{
+                cursor: pointer;
+            }
+
+            #cat2{
+                margin-left: 40px;
+                margin-top: 70px;
+            }
+    
+         </style>
+    
+    </head>
+    
+    <body>
+
+
+        <h1 id="text"> Turn your volume on, and click the cat for a surprise! </h1>
+
+    <script>
+// setting up the play function, as well as the hide/show function for the gif
+                    
+         function play(){
+            switchCats();
+            var audio = document.getElementById("audio");
+            var cat2 = document.getElementById("cat2");
+       
+            audio.play();
+            audio.onended = function() {
+                cat1.style.display = "block";
+                cat2.style.display = "none";
+            };
+        }
+
+        function switchCats() {
+         var cat1 = document.getElementById("cat1");
+         var cat2 = document.getElementById("cat2");
+         if (cat2.style.display === "none") {
+            cat1.style.display = "none";
+            cat2.style.display = "block";
+          } 
+        }
+
+        function changeColour(){
+            let randomNumber = Math.floor(Math.random() * 3);
+            colors = ["hotpink","orange","green"];
+             document.getElementById('text').style.color = colors[randomNumber];
+         }
+ 
+         changeColour();
+ 
+         setInterval(function(){
+             changeColour();
+         }, 300) 
+
+         var i = 0;
+
+    </script>
+
+<!-- placing all required images, gifs, and audios within the code -->
+
+        <div class="container"> 
+
+            <button id="cat1" onclick="play()">
+                <img src="catclose.png" width="500px" height="auto">
+            </button>
+            <audio id="audio" src="rickroll.mp3"></audio>
+
+            <button id="cat2" style="display: none;">
+                <img src="cat-jam.gif" width="500px" height="auto">
+            </button>
+        </div>
+
+    </body>
+
+</html>
